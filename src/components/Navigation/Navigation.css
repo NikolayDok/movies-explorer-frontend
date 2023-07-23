@@ -1,0 +1,184 @@
+.navigation {
+  display: none;
+}
+
+.navigation_active {
+  display: block;
+}
+
+.navigation__burger {
+  display: none;
+  position: relative;
+  width: 44px;
+  height: 38px;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: #fafafa;
+  z-index: 2;
+}
+
+.navigation__burger-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 28px;
+  height: 3px;
+  background-color: #000;
+  transition: 0.3s ease;
+}
+
+.navigation__burger-item::before,
+.navigation__burger-item::after {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 3px;
+  background-color: #000;
+  transition: 0.3s ease;
+}
+
+.navigation__burger-item::before {
+  top: -10px;
+  left: 0;
+}
+
+.navigation__burger-item::after {
+  top: 10px;
+  left: 0;
+}
+
+.navigation__burger_active .navigation__burger-item {
+  background-color: transparent;
+}
+
+.navigation__burger_active .navigation__burger-item::before {
+  width: 22px;
+  top: 0;
+  left: 16px;
+  transform: rotate(45deg);
+}
+
+.navigation__burger_active .navigation__burger-item::after {
+  width: 22px;
+  top: 0;
+  left: 16px;
+  transform: rotate(135deg);
+}
+
+.navigation__links {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  padding: 159px 0 90px 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  max-width: 520px;
+  width: 100%;
+  background-color: #fafafa;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+}
+
+.navigation__links_active {
+  display: flex;
+}
+
+.navigation__main-link:hover {
+  opacity: 0.7;
+}
+
+.navigation__movies-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+.navigation__movies-link {
+  box-sizing: border-box;
+  text-decoration: none;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: #000;
+  transition: opacity 0.3s ease;
+  padding: 0 0 5px 0;
+}
+
+.navigation__movies-link_active {
+  border-bottom: 2px solid #000;
+}
+
+.navigation__movies-link:hover {
+  opacity: 0.7;
+}
+
+.navigation__account-btn {
+  box-sizing: border-box;
+  text-decoration: none;
+  text-align: center;
+  width: 100px;
+  height: 32px;
+  font-size: 14px;
+  color: #000;
+  border-radius: 3px;
+  background: #f4f4f4;
+  padding: 8px 20px;
+  border-radius: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.navigation__account-btn:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+  .navigation__burger {
+    display: block;
+  }
+
+  .navigation {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .navigation__burger {
+    width: 40px;
+    height: 38px;
+  }
+
+  .navigation__burger-item {
+    width: 22px;
+  }
+
+  .navigation__burger-item::before,
+  .navigation__burger-item::after {
+    width: 22px;
+  }
+
+  .navigation__burger_active .navigation__burger-item::before {
+    top: -9px;
+    left: 5px;
+  }
+
+  .navigation__burger_active .navigation__burger-item::after {
+    top: -9px;
+    left: 5px;
+  }
+
+  .navigation__links {
+    padding: 145px 0 45px 0;
+  }
+
+  .navigation__movies-menu {
+    gap: 19px;
+  }
+}

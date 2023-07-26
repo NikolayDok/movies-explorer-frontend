@@ -9,29 +9,33 @@ function Profile() {
   };
 
   return (
-    <main className="profile">
-      <h2 className="profile__title">Привет, Виталий!</h2>
+    <section className="profile">
+      <h1 className="profile__title">Привет, Виталий!</h1>
       <form className="profile__form">
         <fieldset className="profile__fieldset">
           <label className="profile__input-label">
-            <p className="profile__input-text">Имя</p>
+            <span className="profile__input-text">Имя</span>
             <input
               className="profile__input"
               type="text"
               name="name"
               placeholder="Имя"
-              value={"Виталий"}
+              defaultValue="Виталий"
+              // value=""
+              minLength={2}
+              maxLength={30}
               required
             />
           </label>
           <span className="profile__line"></span>
           <label className="profile__input-label">
-            <p className="profile__input-text">E-mail</p>
+            <span className="profile__input-text">E-mail</span>
             <input
               className="profile__input"
               type="email"
               name="email"
-              value={"pochta@yandex.ru"}
+              defaultValue="pochta@yandex.ru"
+              // value=""
               placeholder="E-mail"
               required
             />
@@ -46,7 +50,7 @@ function Profile() {
           </button>
         </div>
       </form>
-    </main>
+    </section>
   );
 }
 

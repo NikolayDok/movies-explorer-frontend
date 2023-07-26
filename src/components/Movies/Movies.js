@@ -25,82 +25,98 @@ import Preloader from "./Preloader/Preloader";
 function Movies() {
   const moviesList = [
     {
+      id: 1,
       image: movieImg1,
       nameRU: "33 слова о дизайне",
       duration: "1ч42м",
     },
     {
+      id: 2,
       image: movieImg2,
       nameRU: "33 слова о дизайне",
       duration: "1ч42м",
     },
     {
+      id: 3,
       image: movieImg3,
       nameRU: "33 слова о дизайне",
       duration: "1ч42м",
     },
     {
+      id: 4,
       image: movieImg4,
       nameRU: "33 слова о дизайне",
       duration: "1ч42м",
     },
     {
+      id: 5,
       image: movieImg5,
       nameRU: "33 слова о дизайне",
       duration: "1ч42м",
     },
     {
+      id: 6,
       image: movieImg6,
       nameRU: "33 слова о дизайне",
       duration: "1ч42м",
       owner: "user",
     },
     {
+      id: 7,
       image: movieImg7,
       nameRU: "33 слова о дизайне",
       duration: "1ч42м",
     },
     {
+      id: 8,
       image: movieImg8,
       nameRU: "33 слова о дизайне",
       duration: "1ч42м",
     },
     {
+      id: 9,
       image: movieImg9,
       nameRU: "33 слова о дизайне",
       duration: "1ч42м",
     },
     {
+      id: 10,
       image: movieImg10,
       nameRU: "33 слова о дизайне",
       duration: "1ч42м",
     },
     {
+      id: 11,
       image: movieImg11,
       nameRU: "33 слова о дизайне",
       duration: "1ч42м",
     },
     {
+      id: 12,
       image: movieImg12,
       nameRU: "33 слова о дизайне",
       duration: "1ч42м",
     },
     {
+      id: 13,
       image: movieImg13,
       nameRU: "33 слова о дизайне",
       duration: "1ч42м",
     },
     {
+      id: 14,
       image: movieImg14,
       nameRU: "33 слова о дизайне",
       duration: "1ч42м",
     },
     {
+      id: 15,
       image: movieImg15,
       nameRU: "33 слова о дизайне",
       duration: "1ч42м",
     },
     {
+      id: 16,
       image: movieImg16,
       nameRU: "33 слова о дизайне",
       duration: "1ч42м",
@@ -108,7 +124,7 @@ function Movies() {
   ];
 
   return (
-    <main>
+    <main className="movies">
       <SearchForm />
       {moviesList.length !== 0 ? (
         <MoviesCardList moviesList={moviesList} />

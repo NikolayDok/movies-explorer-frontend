@@ -5,33 +5,34 @@ import "./Login.css";
 
 function Login() {
   return (
-    <main className="login">
+    <section className="login">
       <Link to="/">
         <img src={logo} alt="Логотип" className="login__logo" />
       </Link>
-      <h2 className="login__title">Рады видеть!</h2>
+      <h1 className="login__title">Рады видеть!</h1>
       <form className="login__form">
         <fieldset className="login__fieldset">
           <label className="login__input-label">
-            <p className="login__input-text">E-mail</p>
+            <span className="login__input-text">E-mail</span>
             <input
               className="login__input"
               type="email"
               name="email"
-              value={"pochta@yandex.ru"}
-              // placeholder="pochta@yandex.ru"
+              defaultValue="pochta@yandex.ru"
+              placeholder="Email"
               required
             />
             <span className="login__validate-error"></span>
           </label>
           <label className="login__input-label">
-            <p className="login__input-text">Пароль</p>
+            <span className="login__input-text">Пароль</span>
             <input
               className="login__input"
               type="password"
               name="password"
-              // value=""
               placeholder=""
+              minLength={2}
+              maxLength={30}
               required
             />
             <span className="login__validate-error"></span>
@@ -49,7 +50,7 @@ function Login() {
           </div>
         </div>
       </form>
-    </main>
+    </section>
   );
 }
 

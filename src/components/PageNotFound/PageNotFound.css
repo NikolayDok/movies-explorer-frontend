@@ -38,7 +38,7 @@
   transition: opacity 0.2s ease;
 }
 
-.page-not-found__link {
+.page-not-found__link:hover {
   opacity: 0.8;
 }
 

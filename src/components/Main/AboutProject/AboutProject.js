@@ -27,11 +27,11 @@ function AboutProject() {
       </div>
       <div className="about-project__timing">
         <div className="about-project__back">
-          <div className="about-project__period-back">1 неделя</div>
+          <span className="about-project__period-back">1 неделя</span>
           <p className="about-project__timing-text">Back-end</p>
         </div>
         <div className="about-project__front">
-          <div className="about-project__period-front">4 недели</div>
+          <span className="about-project__period-front">4 недели</span>
           <p className="about-project__timing-text">Front-end</p>
         </div>
       </div>

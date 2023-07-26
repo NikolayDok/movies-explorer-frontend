@@ -12,16 +12,19 @@ import Preloader from "../Movies/Preloader/Preloader";
 function SavedMovies() {
   const moviesList = [
     {
+      id: 1,
       image: movieImg1,
       nameRU: "33 слова о дизайне",
       duration: "1ч42м",
     },
     {
+      id: 2,
       image: movieImg2,
       nameRU: "33 слова о дизайне",
       duration: "1ч42м",
     },
     {
+      id: 3,
       image: movieImg3,
       nameRU: "33 слова о дизайне",
       duration: "1ч42м",
@@ -29,7 +32,7 @@ function SavedMovies() {
   ];
 
   return (
-    <main>
+    <main className="saved-movies">
       <SearchForm />
       {moviesList.length !== 0 ? (
         <MoviesCardList moviesList={moviesList} />

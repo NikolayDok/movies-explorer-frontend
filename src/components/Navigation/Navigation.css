@@ -17,6 +17,11 @@
   border: none;
   background-color: #fafafa;
   z-index: 2;
+  transition: opacity 0.2s ease;
+}
+
+.navigation__burger:hover {
+  opacity: 0.8;
 }
 
 .navigation__burger-item {

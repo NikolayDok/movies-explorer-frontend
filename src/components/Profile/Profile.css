@@ -84,6 +84,11 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  transition: opacity 0.2s ease;
+}
+
+.profile__btn-edit:hover {
+  opacity: 0.8;
 }
 
 .profile__btn-signin {
@@ -94,7 +99,11 @@
   font-size: 13px;
   font-style: normal;
   font-weight: 500;
-  line-height: normal;
+  transition: opacity 0.2s ease;
+}
+
+.profile__btn-signin:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 800px) {

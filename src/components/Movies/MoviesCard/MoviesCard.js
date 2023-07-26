@@ -26,7 +26,7 @@ function MoviesCard({ movieCard }) {
         className="movies-card__movies-link"
         rel="noreferrer"
       >
-        <img className="movies-card__image" src={image} alt="Превью" />
+        <img className="movies-card__image" src={image} alt="Превью фильма" />
       </a>
       <div className="movies-card__container">
         <div className="movies-card__description">

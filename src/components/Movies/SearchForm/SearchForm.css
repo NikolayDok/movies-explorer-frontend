@@ -1,7 +1,7 @@
 .search-form {
   display: flex;
   flex-direction: column;
-  padding: 72px 70px 0;
+  padding: 74px 70px 0;
 }
 
 .search-form::after {
@@ -13,26 +13,31 @@
 }
 
 .search-form__container {
-  position: relative;
-  margin: 0 0 27px 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 25px 0;
+  border-radius: 8px;
+  border: 1.5px solid #aaa;
+  transition: all 0.2s ease-out;
+  padding: 10px;
 }
 
 .search-form__input {
   box-sizing: border-box;
   margin: 0;
-  padding: 0 130px 0 25px;
-  width: 100%;
+  padding: 0 15px;
+  height: 52px;
   color: #3d3d3d;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
   background-color: inherit;
-  max-width: 1140px;
-  height: 72px;
-  border-radius: 8px;
-  border: 1.5px solid #aaa;
+  border: none;
   transition: all 0.2s ease-out;
+  flex-grow: 1;
 }
 
 .search-form__input::placeholder {
@@ -47,7 +52,6 @@
 
 .search-form__input:focus {
   outline: none;
-  border: 1.5px solid #3456f3;
 }
 
 .search-form__input:focus::placeholder {
@@ -55,10 +59,7 @@
 }
 
 .search-form__submit-btn {
-  position: absolute;
   box-sizing: border-box;
-  top: 12px;
-  right: 10px;
   width: 100px;
   height: 52px;
   border-radius: 5px;
@@ -92,8 +93,13 @@
   font-style: normal;
   font-weight: 400;
   line-height: 18px;
-  margin: 0 0 44px 0;
+  margin: 0 0 41px 0;
   cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.search-form__checkbox-label:hover {
+  opacity: 0.8;
 }
 
 .search-form__checkbox {
@@ -140,23 +146,24 @@
   }
 
   .search-form__container {
-    margin: 0 0 30px 0;
+    margin: 0 0 29px 0;
+    border-radius: 8px;
+    padding: 6px;
   }
 
   .search-form__input {
-    height: 56px;
-    padding: 0 98px 0 12px;
+    height: 44px;
+    width: 70%;
+    padding: 0 10px 0 5px;
     font-size: 16px;
     line-height: 16px;
   }
   .search-form__input::placeholder {
     font-size: 16px;
-    line-height: 16зx;
+    line-height: 16px;
   }
 
   .search-form__submit-btn {
-    top: 6px;
-    right: 6px;
     width: 80px;
     height: 44px;
   }

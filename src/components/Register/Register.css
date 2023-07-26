@@ -13,6 +13,11 @@
 
 .register__logo {
   display: block;
+  transition: opacity 0.2s ease;
+}
+
+.register__logo:hover {
+  opacity: 0.8;
 }
 
 .register__title {

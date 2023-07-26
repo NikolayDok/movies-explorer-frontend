@@ -5,45 +5,49 @@ import "./Register.css";
 
 function Register() {
   return (
-    <main className="register">
+    <section className="register">
       <Link to="/">
         <img src={logo} alt="Логотип" className="register__logo" />
       </Link>
-      <h2 className="register__title">Добро пожаловать!</h2>
+      <h1 className="register__title">Добро пожаловать!</h1>
       <form className="register__form">
         <fieldset className="register__fieldset">
           <label className="register__input-label">
-            <p className="register__input-text">Имя</p>
+            <span className="register__input-text">Имя</span>
             <input
               className="register__input"
               type="text"
               name="name"
-              // placeholder="Виталий"
-              value={"Виталий"}
+              placeholder="Имя"
+              defaultValue="Виталий"
+              minLength={2}
+              maxLength={30}
               required
             />
             <span className="register__validate-error"></span>
           </label>
           <label className="register__input-label">
-            <p className="register__input-text">E-mail</p>
+            <span className="register__input-text">E-mail</span>
             <input
               className="register__input"
               type="email"
               name="email"
-              value={"pochta@yandex.ru"}
-              // placeholder="pochta@yandex.ru"
+              defaultValue="pochta@yandex.ru"
+              placeholder="Email"
               required
             />
             <span className="register__validate-error"></span>
           </label>
           <label className="register__input-label">
-            <p className="register__input-text">Пароль</p>
+            <span className="register__input-text">Пароль</span>
             <input
               className="register__input register__input_error"
               type="password"
               name="password"
-              value={"••••••••••••••"}
-              // placeholder="••••••••••••••"
+              defaultValue="••••••••••••••"
+              placeholder="Пароль"
+              minLength={6}
+              maxLength={30}
               required
             />
             <span className="register__validate-error">
@@ -63,7 +67,7 @@ function Register() {
           </div>
         </div>
       </form>
-    </main>
+    </section>
   );
 }
 

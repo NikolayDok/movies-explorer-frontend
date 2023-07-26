@@ -4,10 +4,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 70px;
+  padding: 18px 70px 14px;
 }
 .header__logo-link {
   height: 38px;
+  transition: opacity 0.3s ease;
+}
+
+.header__logo-link:hover {
+  opacity: 0.8;
 }
 
 .header__logo {
@@ -53,7 +58,7 @@
   transition: opacity 0.3s ease;
 }
 
-.nheader__account-btn:hover {
+.header__account-btn:hover {
   opacity: 0.8;
 }
 

@@ -1,44 +1,60 @@
-import React, { useState } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import "./MoviesCard.css";
 import saveMovieBtnActive from "../../../images/card-button_active.svg";
 import saveMovieBtnDisabled from "../../../images/card-button_disabled.svg";
 import deleteMovieBtn from "../../../images/card-button_delete.svg";
 
-function MoviesCard({ movieCard }) {
-  const { image, duration, nameRU } = movieCard;
+function MoviesCard({ movie, onSaveClick, onDeleteClick, savedMovies }) {
   const location = useLocation();
-  const [isSaved, setIsSaved] = useState(false);
 
-  function handleClick() {
-    setIsSaved(!isSaved);
-  }
+  const isSaved = savedMovies
+    ? savedMovies.some((item) => item.movieId === movie.id)
+    : false;
 
-  function handleDelete() {
-    alert("Удаление карточки");
-  }
+  const handleSaveClick = () => {
+    onSaveClick(movie);
+  };
+
+  const handleDeleteClick = () => {
+    onDeleteClick(movie);
+  };
 
   return (
     <li className="movies-card">
       <a
-        href="#"
+        href={movie.trailerLink}
         target="_blank"
         className="movies-card__movies-link"
         rel="noreferrer"
       >
-        <img className="movies-card__image" src={image} alt="Превью фильма" />
+        {location.pathname === "/movies" ? (
+          <img
+            className="movies-card__image"
+            src={`https://api.nomoreparties.co/${movie.image.formats.thumbnail.url}`}
+            alt="Превью фильма"
+          />
+        ) : (
+          <img
+            className="movies-card__image"
+            src={movie.thumbnail}
+            alt="Превью фильма"
+          />
+        )}
       </a>
       <div className="movies-card__container">
         <div className="movies-card__description">
-          <h2 className="movies-card__title">{nameRU}</h2>
-          <p className="movies-card__duration">{duration}</p>
+          <h2 className="movies-card__title">{movie.nameRU}</h2>
+          <p className="movies-card__duration">
+            {Math.floor(movie.duration / 60) || "0"}ч {movie.duration % 60}м
+          </p>
         </div>
         {location.pathname === "/movies" && (
           <button
             type="button"
             aria-label="Добавить в сохраненные"
             className="movies-card__btn"
-            onClick={handleClick}
+            onClick={handleSaveClick}
           >
             {isSaved ? (
               <img
@@ -60,7 +76,7 @@ function MoviesCard({ movieCard }) {
             type="button"
             aria-label="удалить фильм"
             className="movies-card__btn-delete"
-            onClick={handleDelete}
+            onClick={handleDeleteClick}
           >
             <img
               className="movies-сard__img-btn-delete"

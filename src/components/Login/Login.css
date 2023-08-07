@@ -72,13 +72,13 @@
 
 .login__validate-error {
   display: block;
-  min-height: 10px;
+  min-height: 24px;
   color: #ee3465;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin: 8px 0 2px;
+  padding: 3px 0 2px;
 }
 
 .login__input_error::placeholder {
@@ -138,6 +138,15 @@
 
 .login__btn-signin:hover {
   opacity: 0.8;
+}
+
+.login__btn-edit_disabled {
+  background: #737474;
+  cursor: auto;
+}
+
+.login__btn-edit_disabled:hover {
+  opacity: 1;
 }
 
 @media screen and (max-width: 550px) {

@@ -3,133 +3,112 @@ import "./Movies.css";
 import SearchForm from "./SearchForm/SearchForm";
 import MoviesCardList from "./MoviesCardList/MoviesCardList";
 
-import movieImg1 from "../../images/movie-img_1.jpg";
-import movieImg2 from "../../images/movie-img_2.jpg";
-import movieImg3 from "../../images/movie-img_3.jpg";
-import movieImg4 from "../../images/movie-img_4.jpg";
-import movieImg5 from "../../images/movie-img_5.jpg";
-import movieImg6 from "../../images/movie-img_6.jpg";
-import movieImg7 from "../../images/movie-img_7.jpg";
-import movieImg8 from "../../images/movie-img_8.jpg";
-import movieImg9 from "../../images/movie-img_9.jpg";
-import movieImg10 from "../../images/movie-img_10.jpg";
-import movieImg11 from "../../images/movie-img_11.jpg";
-import movieImg12 from "../../images/movie-img_12.jpg";
-import movieImg13 from "../../images/movie-img_13.jpg";
-import movieImg14 from "../../images/movie-img_14.jpg";
-import movieImg15 from "../../images/movie-img_15.jpg";
-import movieImg16 from "../../images/movie-img_16.jpg";
-
 import Preloader from "./Preloader/Preloader";
 
-function Movies() {
-  const moviesList = [
-    {
-      id: 1,
-      image: movieImg1,
-      nameRU: "33 слова о дизайне",
-      duration: "1ч42м",
-    },
-    {
-      id: 2,
-      image: movieImg2,
-      nameRU: "33 слова о дизайне",
-      duration: "1ч42м",
-    },
-    {
-      id: 3,
-      image: movieImg3,
-      nameRU: "33 слова о дизайне",
-      duration: "1ч42м",
-    },
-    {
-      id: 4,
-      image: movieImg4,
-      nameRU: "33 слова о дизайне",
-      duration: "1ч42м",
-    },
-    {
-      id: 5,
-      image: movieImg5,
-      nameRU: "33 слова о дизайне",
-      duration: "1ч42м",
-    },
-    {
-      id: 6,
-      image: movieImg6,
-      nameRU: "33 слова о дизайне",
-      duration: "1ч42м",
-      owner: "user",
-    },
-    {
-      id: 7,
-      image: movieImg7,
-      nameRU: "33 слова о дизайне",
-      duration: "1ч42м",
-    },
-    {
-      id: 8,
-      image: movieImg8,
-      nameRU: "33 слова о дизайне",
-      duration: "1ч42м",
-    },
-    {
-      id: 9,
-      image: movieImg9,
-      nameRU: "33 слова о дизайне",
-      duration: "1ч42м",
-    },
-    {
-      id: 10,
-      image: movieImg10,
-      nameRU: "33 слова о дизайне",
-      duration: "1ч42м",
-    },
-    {
-      id: 11,
-      image: movieImg11,
-      nameRU: "33 слова о дизайне",
-      duration: "1ч42м",
-    },
-    {
-      id: 12,
-      image: movieImg12,
-      nameRU: "33 слова о дизайне",
-      duration: "1ч42м",
-    },
-    {
-      id: 13,
-      image: movieImg13,
-      nameRU: "33 слова о дизайне",
-      duration: "1ч42м",
-    },
-    {
-      id: 14,
-      image: movieImg14,
-      nameRU: "33 слова о дизайне",
-      duration: "1ч42м",
-    },
-    {
-      id: 15,
-      image: movieImg15,
-      nameRU: "33 слова о дизайне",
-      duration: "1ч42м",
-    },
-    {
-      id: 16,
-      image: movieImg16,
-      nameRU: "33 слова о дизайне",
-      duration: "1ч42м",
-    },
-  ];
+function Movies({
+  films,
+  searchFilms,
+  setSearchFilms,
+  searchFilmsValue,
+  setSearchFilmsValue,
+  isShortFilms,
+  setIsShortFilms,
+  windowSize,
+  isWaitingFilms,
+  searchConnectError,
+  formatTime,
+  onSaveClick,
+  savedMovies,
+}) {
+  const searchMovieClick = (searchFilmsValue) => {
+    setSearchFilms(searchFilmsValue);
+  };
+
+  const [counterMovies, setCounterMovies] = React.useState(0);
+
+  const moviesCards = React.useCallback(() => {
+    if (windowSize >= 1280) {
+      setCounterMovies(16);
+    } else if (windowSize >= 1001) {
+      setCounterMovies(12);
+    } else if (windowSize >= 768) {
+      setCounterMovies(8);
+    } else {
+      setCounterMovies(5);
+    }
+  }, [windowSize]);
+
+  React.useEffect(() => {
+    if (searchFilms.length > 0) {
+      moviesCards();
+    }
+  }, [searchFilms, isShortFilms, moviesCards]);
+
+  const showMoreMovies = () => {
+    if (windowSize >= 1280) {
+      setCounterMovies(counterMovies + 4);
+    } else if (windowSize >= 1001) {
+      setCounterMovies(counterMovies + 3);
+    } else if (windowSize >= 768) {
+      setCounterMovies(counterMovies + 2);
+    } else {
+      setCounterMovies(counterMovies + 1);
+    }
+  };
+
+  const showMoreBtn = () => {
+    if (films === null || searchFilms.length === 0) {
+      return false;
+    }
+
+    if (counterMovies >= films.length) {
+      return false;
+    } else {
+      return true;
+    }
+  };
 
   return (
     <main className="movies">
-      <SearchForm />
-      {moviesList.length !== 0 ? (
-        <MoviesCardList moviesList={moviesList} />
+      <SearchForm
+        searchFilmsValue={searchFilmsValue}
+        setSearchFilmsValue={setSearchFilmsValue}
+        isShortFilms={isShortFilms}
+        setIsShortFilms={setIsShortFilms}
+        searchMovieClick={searchMovieClick}
+      />
+      {searchConnectError ? (
+        <p className="movies__search-connect-error">
+          Во время запроса произошла ошибка. Возможно, проблема с соединением
+          или сервер недоступен. Подождите немного и попробуйте ещё раз
+        </p>
       ) : (
+        ""
+      )}
+      {!films ? null : isWaitingFilms ? (
         <Preloader />
+      ) : films.length > 0 ? (
+        <MoviesCardList
+          formatTime={formatTime}
+          onSaveClick={onSaveClick}
+          savedMovies={savedMovies}
+          moviesList={films.slice(0, counterMovies)}
+        />
+      ) : (
+        <span className="movies__not-found">Ничего не найдено</span>
+      )}
+
+      {showMoreBtn() && (
+        <div className="movies__btn-more-container">
+          <button
+            type="button"
+            onClick={showMoreMovies}
+            aria-label="Загрузить еще"
+            className="movies__btn-more"
+          >
+            Ещё
+          </button>
+        </div>
       )}
     </main>
   );

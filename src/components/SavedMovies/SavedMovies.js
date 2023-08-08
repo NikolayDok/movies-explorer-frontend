@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./SavedMovies.css";
 import SearchForm from "../Movies/SearchForm/SearchForm";
 import MoviesCardList from "../Movies/MoviesCardList/MoviesCardList";
@@ -7,6 +7,7 @@ function SavedMovies({
   savedMoviesList,
   formatTime,
   onDeleteClick,
+  searchFilms,
   setSearchFilms,
   isShortFilms,
   setIsShortFilms,
@@ -16,6 +17,12 @@ function SavedMovies({
   const searchMovieClick = (searchFilmsValue) => {
     setSearchFilms(searchFilmsValue);
   };
+
+  useEffect(() => {
+    if (searchFilmsValue) {
+      setSearchFilms("");
+    }
+  }, [searchFilmsValue, setSearchFilms]);
 
   return (
     <main className="saved-movies">

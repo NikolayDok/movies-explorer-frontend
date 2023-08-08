@@ -44,6 +44,7 @@ function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || "");
 
   const [searchConnectError, setSearchConnectError] = useState(false);
+
   const [isWaitingFilms, setIsWaitingFilms] = useState(false);
   const [isTaking, setIsTaking] = useState(null);
   const [windowSize, setWindowSize] = useState(window.innerWidth);

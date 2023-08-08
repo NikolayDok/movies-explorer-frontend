@@ -52,7 +52,7 @@ function Movies({
     } else if (windowSize >= 768) {
       setCounterMovies(counterMovies + 2);
     } else {
-      setCounterMovies(counterMovies + 1);
+      setCounterMovies(counterMovies + 2);
     }
   };
 

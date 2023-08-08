@@ -4,7 +4,12 @@ import { useFormValidation } from "../hooks/useFormValidation";
 import logo from "../../images/logo.svg";
 import "./Login.css";
 
-function Login({ handleLogin, isTaking, isConflictMessage }) {
+function Login({
+  handleLogin,
+  isTaking,
+  isConflictMessage,
+  setIsConflictMessage,
+}) {
   const { values, errors, isValid, handleChange, resetForm } =
     useFormValidation();
 
@@ -14,6 +19,12 @@ function Login({ handleLogin, isTaking, isConflictMessage }) {
     const { email, password } = values;
     handleLogin(email, password);
   };
+
+  useEffect(() => {
+    if (values) {
+      setIsConflictMessage("");
+    }
+  }, [values, setIsConflictMessage]);
 
   return (
     <section className="login">

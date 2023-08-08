@@ -49,7 +49,10 @@ function App() {
   const [isTaking, setIsTaking] = useState(null);
   const [windowSize, setWindowSize] = useState(window.innerWidth);
 
-  const [isConflictMessage, setIsConflictMessage] = useState("");
+  const [isConflictMessageRegister, setIsConflictMessageRegister] =
+    useState("");
+  const [isConflictMessageLogin, setIsConflictMessageLogin] = useState("");
+  const [isConflictMessageProfile, setIsConflictMessageProfile] = useState("");
 
   const navigate = useNavigate();
   let location = useLocation();
@@ -155,7 +158,9 @@ function App() {
         console.log("signup error: " + err);
 
         if (err === 409) {
-          setIsConflictMessage("Пользователь с таким Email уже существует");
+          setIsConflictMessageRegister(
+            "Пользователь с таким Email уже существует",
+          );
         }
       })
       .finally(() => setIsTaking(false));
@@ -175,12 +180,12 @@ function App() {
         }
       })
       .catch((err) => {
-        setIsConflictMessage("");
+        setIsConflictMessageLogin("");
 
         console.log("signin error: " + err);
 
         if (err === 401) {
-          setIsConflictMessage("Неверно введен Email или пароль");
+          setIsConflictMessageLogin("Неверно введен Email или пароль");
         }
       })
       .finally(() => setIsTaking(false));
@@ -203,11 +208,14 @@ function App() {
           name: userData.name,
           email: userData.email,
         });
-
-        setIsConflictMessage("");
+        setIsConflictMessageProfile("");
       })
       .catch((err) => {
         console.log("setUserInfo error: " + err);
+
+        if (err === 500) {
+          setIsConflictMessageProfile("Email занят");
+        }
       })
       .finally(() => setIsTaking(false));
   };
@@ -278,7 +286,7 @@ function App() {
     setSearchSavedMovies("");
     setIsShortSavedMovies(false);
     setSearchSavedMoviesValue("");
-    setIsConflictMessage("");
+    setIsConflictMessageLogin("");
     setCurrentUser({
       _id: "",
       name: "",
@@ -347,6 +355,8 @@ function App() {
                 signOut={signOut}
                 handleEditProfile={handleEditProfile}
                 isTaking={isTaking}
+                isConflictMessage={isConflictMessageProfile}
+                setIsConflictMessage={setIsConflictMessageProfile}
               />
             }
           />
@@ -357,7 +367,8 @@ function App() {
               <Register
                 handleRegister={handleRegister}
                 isTaking={isTaking}
-                isConflictMessage={isConflictMessage}
+                isConflictMessage={isConflictMessageRegister}
+                setIsConflictMessage={setIsConflictMessageRegister}
               />
             }
           />
@@ -368,7 +379,8 @@ function App() {
               <Login
                 handleLogin={handleLogin}
                 isTaking={isTaking}
-                isConflictMessage={isConflictMessage}
+                isConflictMessage={isConflictMessageLogin}
+                setIsConflictMessage={setIsConflictMessageLogin}
               />
             }
           />

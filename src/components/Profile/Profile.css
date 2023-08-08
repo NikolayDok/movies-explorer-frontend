@@ -92,6 +92,19 @@
   gap: 12px;
 }
 
+.profile__edit-error {
+  display: block;
+  text-align: center;
+  min-height: 14px;
+  color: #ee3465;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 3px 0 2px;
+  width: 410px;
+}
+
 .profile__btn-edit {
   border: none;
   background-color: transparent;

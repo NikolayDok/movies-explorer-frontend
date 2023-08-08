@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useFormValidation } from "../hooks/useFormValidation";
 import logo from "../../images/logo.svg";
 import "./Register.css";
 
-function Register({ handleRegister, isTaking, isConflictMessage }) {
+function Register({
+  handleRegister,
+  isTaking,
+  isConflictMessage,
+  setIsConflictMessage,
+}) {
   const { values, errors, isValid, handleChange, resetForm } =
     useFormValidation();
 
@@ -14,6 +19,12 @@ function Register({ handleRegister, isTaking, isConflictMessage }) {
     const { name, email, password } = values;
     handleRegister(name, email, password);
   };
+
+  useEffect(() => {
+    if (values) {
+      setIsConflictMessage("");
+    }
+  }, [values, setIsConflictMessage]);
 
   return (
     <section className="register">

@@ -4,7 +4,13 @@ import { useFormValidation } from "../hooks/useFormValidation";
 
 import "./Profile.css";
 
-function Profile({ signOut, handleEditProfile, isTaking }) {
+function Profile({
+  signOut,
+  handleEditProfile,
+  isTaking,
+  isConflictMessage,
+  setIsConflictMessage,
+}) {
   const { values, errors, isValid, handleChange, resetForm, setValues } =
     useFormValidation();
 
@@ -15,7 +21,8 @@ function Profile({ signOut, handleEditProfile, isTaking }) {
       name: currentUser.name,
       email: currentUser.email,
     });
-  }, [setValues, currentUser.name, currentUser.email]);
+    setIsConflictMessage("");
+  }, [setValues, currentUser.name, currentUser.email, setIsConflictMessage]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -66,6 +73,7 @@ function Profile({ signOut, handleEditProfile, isTaking }) {
           <span className="profile__validate-error">{errors.email || ""}</span>
         </fieldset>
         <div className="profile__edit">
+          <span className="profile__edit-error">{isConflictMessage}</span>
           <button
             disabled={!isButtonAble}
             className={`profile__btn-edit ${

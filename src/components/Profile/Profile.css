@@ -90,6 +90,24 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  position: relative;
+}
+
+.profile__edit-message {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  text-align: center;
+  min-height: 30px;
+  color: #3456f3;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 3px 0 2px;
+  /* width: 410px; */
 }
 
 .profile__edit-error {

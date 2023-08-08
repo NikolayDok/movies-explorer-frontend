@@ -10,6 +10,7 @@ function Profile({
   isTaking,
   isConflictMessage,
   setIsConflictMessage,
+  isProfileEditMessage,
 }) {
   const { values, errors, isValid, handleChange, resetForm, setValues } =
     useFormValidation();
@@ -74,6 +75,7 @@ function Profile({
         </fieldset>
         <div className="profile__edit">
           <span className="profile__edit-error">{isConflictMessage}</span>
+          <span className="profile__edit-message">{isProfileEditMessage}</span>
           <button
             disabled={!isButtonAble}
             className={`profile__btn-edit ${

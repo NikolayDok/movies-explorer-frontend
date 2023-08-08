@@ -53,6 +53,7 @@ function App() {
     useState("");
   const [isConflictMessageLogin, setIsConflictMessageLogin] = useState("");
   const [isConflictMessageProfile, setIsConflictMessageProfile] = useState("");
+  const [isProfileEditMessage, setIsProfileEditMessage] = useState("");
 
   const navigate = useNavigate();
   let location = useLocation();
@@ -209,6 +210,10 @@ function App() {
           email: userData.email,
         });
         setIsConflictMessageProfile("");
+        setIsProfileEditMessage("Изменения сохранены!");
+        setTimeout(() => {
+          setIsProfileEditMessage("");
+        }, 3000);
       })
       .catch((err) => {
         console.log("setUserInfo error: " + err);
@@ -357,6 +362,7 @@ function App() {
                 isTaking={isTaking}
                 isConflictMessage={isConflictMessageProfile}
                 setIsConflictMessage={setIsConflictMessageProfile}
+                isProfileEditMessage={isProfileEditMessage}
               />
             }
           />

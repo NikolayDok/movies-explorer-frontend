@@ -1,62 +1,105 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useFormValidation } from "../hooks/useFormValidation";
 import logo from "../../images/logo.svg";
 import "./Register.css";
 
-function Register() {
+function Register({
+  handleRegister,
+  isTaking,
+  isConflictMessage,
+  setIsConflictMessage,
+}) {
+  const { values, errors, isValid, handleChange, resetForm } =
+    useFormValidation();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const { name, email, password } = values;
+    handleRegister(name, email, password);
+  };
+
+  useEffect(() => {
+    if (values) {
+      setIsConflictMessage("");
+    }
+  }, [values, setIsConflictMessage]);
+
   return (
     <section className="register">
       <Link to="/">
         <img src={logo} alt="Логотип" className="register__logo" />
       </Link>
       <h1 className="register__title">Добро пожаловать!</h1>
-      <form className="register__form">
+      <form className="register__form" onSubmit={handleSubmit}>
         <fieldset className="register__fieldset">
           <label className="register__input-label">
             <span className="register__input-text">Имя</span>
             <input
-              className="register__input"
-              type="text"
+              className={`register__input ${
+                errors.name && "register__input_error"
+              }`}
+              type="name"
               name="name"
-              placeholder="Имя"
-              defaultValue="Виталий"
+              placeholder=""
               minLength={2}
               maxLength={30}
+              value={values.name || ""}
+              onChange={handleChange}
               required
             />
-            <span className="register__validate-error"></span>
+            <span className="register__validate-error">
+              {errors.name || ""}
+            </span>
           </label>
           <label className="register__input-label">
             <span className="register__input-text">E-mail</span>
             <input
-              className="register__input"
+              className={`register__input ${
+                errors.email && "register__input_error"
+              }`}
               type="email"
               name="email"
-              defaultValue="pochta@yandex.ru"
-              placeholder="Email"
+              placeholder=""
+              pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+              value={values.email || ""}
+              onChange={handleChange}
               required
             />
-            <span className="register__validate-error"></span>
+            <span className="register__validate-error">
+              {errors.email || ""}
+            </span>
           </label>
           <label className="register__input-label">
             <span className="register__input-text">Пароль</span>
             <input
-              className="register__input register__input_error"
+              className={`register__input ${
+                errors.password && "register__input_error"
+              }`}
               type="password"
               name="password"
-              defaultValue="••••••••••••••"
-              placeholder="Пароль"
+              placeholder=""
               minLength={6}
               maxLength={30}
+              value={values.password || ""}
+              onChange={handleChange}
               required
             />
             <span className="register__validate-error">
-              Что-то пошло не так...
+              {errors.password || ""}
             </span>
           </label>
         </fieldset>
         <div className="register__edit">
-          <button className="register__btn-edit" type="submit">
+          <span className="register__validate-error">{isConflictMessage}</span>
+          <button
+            disabled={!isValid || isTaking}
+            className={`register__btn-edit ${
+              !isValid && "register__btn-edit_disabled"
+            }`}
+            type="submit"
+          >
             Зарегистрироваться
           </button>
           <div className="register__question">

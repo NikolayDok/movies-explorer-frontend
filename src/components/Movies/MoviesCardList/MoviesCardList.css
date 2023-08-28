@@ -14,27 +14,6 @@
   padding: 0;
 }
 
-.movies-list__btn-more-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 80px 0 0 0;
-}
-
-.movies-list__btn-more {
-  width: 320px;
-  height: 36px;
-  border: none;
-  border-radius: 6px;
-  background-color: #f4f4f4;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-}
-
 .movies-list__btn-more:hover {
   opacity: 0.8;
 }
@@ -65,14 +44,5 @@
   .movies-list__cards {
     grid-template-columns: repeat(auto-fit, 300px);
     row-gap: 20px;
-  }
-
-  .movies-list__btn-more-container {
-    padding: 80px 0 0 0;
-  }
-
-  .movies-list__btn-more {
-    width: 240px;
-    height: 36px;
   }
 }

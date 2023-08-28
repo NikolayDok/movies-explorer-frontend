@@ -25,4 +25,12 @@
 
 ### Макет FIGMA:
 
-https://disk.yandex.ru/d/273sPfySyl40Aw
+Url [макет MOVIES-explorer](https://disk.yandex.ru/d/273sPfySyl40Aw)
+
+### Frontend:
+
+Url [ndok.nomoredomains.monster](http://ndok.nomoredomains.monster)
+
+### Pull request:
+
+Url [ссылка на Pull request](https://github.com/NikolayDok/movies-explorer-frontend/pull/2)

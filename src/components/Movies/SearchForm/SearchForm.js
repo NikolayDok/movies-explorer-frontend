@@ -1,22 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
+
 import "./SearchForm.css";
 
-function SearchForm() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
+function SearchForm({
+  searchFilmsValue,
+  setSearchFilmsValue,
+  isShortFilms,
+  setIsShortFilms,
+  searchMovieClick,
+}) {
+  const [searchFilmsValueError, setSearchFilmsValueError] = useState(false);
+
+  const handleSearchFilmsValue = (e) => {
+    setSearchFilmsValue(e.target.value);
+  };
+
+  const handleSubmitSearch = (e) => {
+    e.preventDefault();
+    if (!searchFilmsValue) {
+      setSearchFilmsValueError(true);
+    } else {
+      searchMovieClick(searchFilmsValue);
+      setSearchFilmsValueError(false);
+    }
+  };
+
+  const handleCheckbox = () => {
+    setIsShortFilms(!isShortFilms);
   };
 
   return (
     <section>
-      <form className="search-form" onSubmit={handleSubmit}>
+      <form className="search-form" onSubmit={handleSubmitSearch} noValidate>
         <div className="search-form__container">
           <input
             type="text"
+            id="search-input-name"
             name="search-movies"
             placeholder="Фильм"
             className="search-form__input"
-            required
+            value={searchFilmsValue}
+            onChange={handleSearchFilmsValue}
           />
+
+          {searchFilmsValueError && (
+            <span className="search-form__error">
+              Нужно ввести ключевое слово
+            </span>
+          )}
 
           <button type="submit" className="search-form__submit-btn">
             Поиск
@@ -29,6 +60,8 @@ function SearchForm() {
               name="short-film-checkbox"
               id="short-film-checkbox"
               className="search-form__checkbox"
+              checked={isShortFilms}
+              onChange={handleCheckbox}
             />
             <span className="search-form__custom-checkbox"></span>
             Короткометражки

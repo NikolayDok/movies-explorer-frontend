@@ -26,12 +26,20 @@ function Navigation() {
         }`}
       >
         <div className="navigation__movies-menu">
-          <NavLink to="/" className="navigation__movies-link">
+          <NavLink
+            to="/"
+            className="navigation__movies-link"
+            onClick={handleToggleBurger}
+          >
             Главная
           </NavLink>
           <NavLink
             to="/movies"
-            className="navigation__movies-link navigation__movies-link_active"
+            className={({ isActive }) =>
+              "navigation__movies-link" +
+              (isActive ? " navigation__movies-link_active" : "")
+            }
+            onClick={handleToggleBurger}
           >
             Фильмы
           </NavLink>
@@ -41,11 +49,16 @@ function Navigation() {
               "navigation__movies-link" +
               (isActive ? " navigation__movies-link_active" : "")
             }
+            onClick={handleToggleBurger}
           >
             Сохранённые фильмы
           </NavLink>
         </div>
-        <NavLink to="/profile" className="navigation__account-btn">
+        <NavLink
+          to="/profile"
+          className="navigation__account-btn"
+          onClick={handleToggleBurger}
+        >
           Аккаунт
         </NavLink>
       </div>

@@ -28,7 +28,7 @@
   background-color: transparent;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 8px;
   margin: 0;
   padding: 0;
 }
@@ -70,10 +70,57 @@
   background-color: #e8e8e8;
 }
 
+.profile__line_transparent {
+  background-color: transparent;
+}
+
+.profile__validate-error {
+  display: block;
+  min-height: 24px;
+  color: #ee3465;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 3px 0 2px;
+  width: 410px;
+}
+
 .profile__edit {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  position: relative;
+}
+
+.profile__edit-message {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  text-align: center;
+  min-height: 30px;
+  color: #3456f3;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 3px 0 2px;
+  /* width: 410px; */
+}
+
+.profile__edit-error {
+  display: block;
+  text-align: center;
+  min-height: 14px;
+  color: #ee3465;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 3px 0 2px;
+  width: 410px;
 }
 
 .profile__btn-edit {
@@ -89,6 +136,15 @@
 
 .profile__btn-edit:hover {
   opacity: 0.8;
+}
+
+.profile__btn-edit_disabled {
+  color: #a7a7a7;
+  cursor: auto;
+}
+
+.profile__btn-edit_disabled:hover {
+  opacity: 1;
 }
 
 .profile__btn-signin {

@@ -1,43 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./SavedMovies.css";
 import SearchForm from "../Movies/SearchForm/SearchForm";
 import MoviesCardList from "../Movies/MoviesCardList/MoviesCardList";
 
-import movieImg1 from "../../images/movie-img_1.jpg";
-import movieImg2 from "../../images/movie-img_2.jpg";
-import movieImg3 from "../../images/movie-img_3.jpg";
+function SavedMovies({
+  savedMoviesList,
+  formatTime,
+  onDeleteClick,
+  searchFilms,
+  setSearchFilms,
+  isShortFilms,
+  setIsShortFilms,
+  searchFilmsValue,
+  setSearchFilmsValue,
+}) {
+  const searchMovieClick = (searchFilmsValue) => {
+    setSearchFilms(searchFilmsValue);
+  };
 
-import Preloader from "../Movies/Preloader/Preloader";
-
-function SavedMovies() {
-  const moviesList = [
-    {
-      id: 1,
-      image: movieImg1,
-      nameRU: "33 слова о дизайне",
-      duration: "1ч42м",
-    },
-    {
-      id: 2,
-      image: movieImg2,
-      nameRU: "33 слова о дизайне",
-      duration: "1ч42м",
-    },
-    {
-      id: 3,
-      image: movieImg3,
-      nameRU: "33 слова о дизайне",
-      duration: "1ч42м",
-    },
-  ];
+  useEffect(() => {
+    if (searchFilmsValue) {
+      setSearchFilms("");
+    }
+  }, [searchFilmsValue, setSearchFilms]);
 
   return (
     <main className="saved-movies">
-      <SearchForm />
-      {moviesList.length !== 0 ? (
-        <MoviesCardList moviesList={moviesList} />
-      ) : (
-        <Preloader />
+      <SearchForm
+        setSearchFilmsValue={setSearchFilmsValue}
+        searchFilmsValue={searchFilmsValue}
+        isShortFilms={isShortFilms}
+        setIsShortFilms={setIsShortFilms}
+        searchMovieClick={searchMovieClick}
+      />
+      {!savedMoviesList ? null : (
+        <MoviesCardList
+          moviesList={savedMoviesList}
+          formatTime={formatTime}
+          onDeleteClick={onDeleteClick}
+        />
       )}
     </main>
   );

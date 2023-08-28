@@ -4,10 +4,10 @@ import "./Header.css";
 import logo from "../../images/logo.svg";
 import Navigation from "../Navigation/Navigation";
 
-function Header({ loggedIn, registrationLink, login, main }) {
+function Header({ loggedIn }) {
   return (
     <header className="header">
-      <Link to="/" className="header__logo-link">
+      <Link to={"/"} className="header__logo-link">
         <img src={logo} alt="Логотип" className="header__logo" />
       </Link>
       {loggedIn ? (
@@ -40,10 +40,10 @@ function Header({ loggedIn, registrationLink, login, main }) {
       ) : (
         <>
           <nav className="header__auth-container">
-            <Link to={registrationLink} className="header__registration-btn">
+            <Link to="/signup" className="header__registration-btn">
               Регистрация
             </Link>
-            <Link to={login} className="header__login-btn">
+            <Link to="/signin" className="header__login-btn">
               Войти
             </Link>
           </nav>
